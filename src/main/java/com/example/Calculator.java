@@ -34,9 +34,11 @@ public class Calculator {
             int delimiterEnd = numbers.indexOf("\n");
             String delimiterPart = numbers.substring(2, delimiterEnd);
             
-
+            if(delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
+                delimiter = Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+            } else {
                 delimiter = Pattern.quote(delimiterPart);
-
+            }
             
             numbers = numbers.substring(delimiterEnd + 1);
         }
