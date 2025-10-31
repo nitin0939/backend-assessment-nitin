@@ -32,4 +32,8 @@ public class CalculatorTest {
     public void shouldAcceptCustomDelimiter(){
         assertEquals(7, Calculator.add("//;\n1;2;4"));
     }
+    @Test
+    public void customDelimiterCouldBeAlsoASpecialRegexChar(){
+        assertEquals(9,Calculator.add("//.\n1.2.4.2"));
+    }
 }
