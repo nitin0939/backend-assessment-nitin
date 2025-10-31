@@ -62,4 +62,8 @@ public class CalculatorTest {
     public void shouldAcceptCustomDelimiterOfAnyLengthWithStartingPattern(){
         assertEquals(6, Calculator.add("//[***]\n1***2***3"));
     }
+    @Test
+    public void shouldAcceptMultipleCustomDelimiters(){
+        assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+    }
 }
