@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
     public static int add(String numbers) {
         if(numbers.isEmpty())
@@ -18,7 +20,7 @@ public class Calculator {
 
         if(numbers.startsWith("//")) {
             int delimiterEnd = numbers.indexOf("\n");
-            delimiter = numbers.substring(2, delimiterEnd);
+            delimiter = Pattern.quote(numbers.substring(2, delimiterEnd));
             numbers = numbers.substring(delimiterEnd + 1);
         }
 
