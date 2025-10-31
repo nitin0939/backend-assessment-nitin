@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Calculator {
@@ -8,14 +9,18 @@ public class Calculator {
             return 0;
 
         String[] tokens = getTokens(numbers);
+        List<Integer> negatives = new java.util.ArrayList<>();
         int sum = 0;
         for(String token : tokens) {
             int number = Integer.parseInt(token);
             if(number < 0) {
-                throw new RuntimeException("negatives not allowed " +number);
+                negatives.add(number);
             } else {
                 sum += number;
             }
+        }
+        if(!negatives.isEmpty()) {
+            throw new RuntimeException("negatives not allowed " + negatives.toString().replace("[", "").replace("]", ""));
         }
         return sum;
     }
