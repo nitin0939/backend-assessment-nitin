@@ -6,7 +6,11 @@ public class Calculator {
             return 0;
         else if (numbers.contains(",")) {
             String tokens[] = numbers.split(",");
-            return Integer.parseInt(tokens[0]) + Integer.parseInt(tokens[1]);
+            int sum = 0;
+            for(String token:tokens){
+                sum += Integer.parseInt(token);
+            }
+            return sum;
         }
         return Integer.parseInt(numbers);
     }
