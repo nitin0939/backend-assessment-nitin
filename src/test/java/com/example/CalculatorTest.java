@@ -36,4 +36,13 @@ public class CalculatorTest {
     public void customDelimiterCouldBeAlsoASpecialRegexChar(){
         assertEquals(9,Calculator.add("//.\n1.2.4.2"));
     }
+    @Test
+    public void shouldRaiseExceptionOnNegativeNumbers(){
+        try{
+            Calculator.add("1,-2");
+            fail("Exception expected");
+        }catch(RuntimeException ex){
+            assertTrue(ex.getMessage().startsWith("negatives not allowed"));
+        }
+    }
 }
