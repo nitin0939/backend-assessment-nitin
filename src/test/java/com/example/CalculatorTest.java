@@ -18,4 +18,9 @@ public class CalculatorTest {
     public void shouldReturnSumOfTwoNumbersDelimitedByComma(){
         assertEquals(3, Calculator.add("1,2"));
     }
+
+    @Test
+    public void shouldReturnSumOfMultipleNumbersDelimitedByComma(){
+        assertEquals(10,Calculator.add("1,2,5,1,1"));
+    }
 }
