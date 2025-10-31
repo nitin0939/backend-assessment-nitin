@@ -10,7 +10,12 @@ public class Calculator {
         String[] tokens = getTokens(numbers);
         int sum = 0;
         for(String token : tokens) {
-            sum += Integer.parseInt(token);
+            int number = Integer.parseInt(token);
+            if(number < 0) {
+                throw new RuntimeException("negatives not allowed " +number);
+            } else {
+                sum += number;
+            }
         }
         return sum;
     }
