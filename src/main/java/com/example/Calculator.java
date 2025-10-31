@@ -5,7 +5,7 @@ public class Calculator {
         if(numbers.isEmpty())
             return 0;
         else if (numbers.contains(",")) {
-            String tokens[] = numbers.split(",");
+            String tokens[] = numbers.split(",|\n");
             int sum = 0;
             for(String token:tokens){
                 sum += Integer.parseInt(token);
