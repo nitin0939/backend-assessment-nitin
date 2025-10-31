@@ -32,7 +32,12 @@ public class Calculator {
 
         if(numbers.startsWith("//")) {
             int delimiterEnd = numbers.indexOf("\n");
-            delimiter = Pattern.quote(numbers.substring(2, delimiterEnd));
+            String delimiterPart = numbers.substring(2, delimiterEnd);
+            
+
+                delimiter = Pattern.quote(delimiterPart);
+
+            
             numbers = numbers.substring(delimiterEnd + 1);
         }
 

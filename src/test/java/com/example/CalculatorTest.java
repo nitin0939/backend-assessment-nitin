@@ -58,4 +58,8 @@ public class CalculatorTest {
     public void numbersBiggerThan1000ShouldBeIgnored(){
         assertEquals(2, Calculator.add("2,1001"));
     }
+    @Test
+    public void shouldAcceptCustomDelimiterOfAnyLengthWithStartingPattern(){
+        assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+    }
 }
