@@ -2,8 +2,10 @@ package com.example;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Calculator {
+
     public static int add(String numbers) {
         if(numbers.isEmpty())
             return 0;
@@ -15,9 +17,7 @@ public class Calculator {
             int number = Integer.parseInt(token);
             if(number < 0) {
                 negatives.add(number);
-            } else {
-                if(1000 < sum + number)
-                    return sum;
+            } else if(number <= 1000) {
                 sum += number;
             }
         }
@@ -34,8 +34,13 @@ public class Calculator {
             int delimiterEnd = numbers.indexOf("\n");
             String delimiterPart = numbers.substring(2, delimiterEnd);
             
-            if(delimiterPart.startsWith("[") && delimiterPart.endsWith("]")) {
-                delimiter = Pattern.quote(delimiterPart.substring(1, delimiterPart.length() - 1));
+            if(delimiterPart.contains("[")) {
+                java.util.List<String> delimiters = new java.util.ArrayList<>();
+                Matcher matcher = Pattern.compile("\\[([^\\]]+)\\]").matcher(delimiterPart);
+                while(matcher.find()) {
+                    delimiters.add(Pattern.quote(matcher.group(1)));
+                }
+                delimiter = String.join("|", delimiters);
             } else {
                 delimiter = Pattern.quote(delimiterPart);
             }
@@ -43,7 +48,6 @@ public class Calculator {
             numbers = numbers.substring(delimiterEnd + 1);
         }
 
-        String[] tokens = numbers.split(delimiter);
-        return tokens;
+        return numbers.split(delimiter);
     }
 }
